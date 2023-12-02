@@ -1,0 +1,22 @@
+{
+  "name": "easycompose-api",
+  "version": "1.0.0",
+  "description": "Restful API for EasyCompsoe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sendiko/easycompose-api.git"
+  },
+  "author": "Sendiko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sendiko/easycompose-api/issues"
+  },
+  "homepage": "https://github.com/Sendiko/easycompose-api#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
