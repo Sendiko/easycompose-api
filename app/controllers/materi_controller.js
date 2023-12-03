@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const materi = require("../models/materi");
 const submateri = require("../models/submateri");
 
@@ -21,9 +22,9 @@ module.exports = {
       });
       const submateris = await submateri.findAll({
         where: {
-          belongsTo: id
-        }
-      })
+          belongsTo: id,
+        },
+      });
       if (materyy == null) {
         return res.status(404).json({
           status: 404,
@@ -33,8 +34,8 @@ module.exports = {
       return res.status(200).json({
         status: 200,
         materi: materyy,
-        submateri: submateris
-      })
+        submateri: submateris,
+      });
     } catch (error) {
       return res.status(500).json({
         status: 500,
@@ -107,6 +108,56 @@ module.exports = {
         message: "Submateri berhasil dibuat.",
         submateri: submateryy,
       });
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: error.message,
+      });
+    }
+  },
+  updateMateri: async (req, res) => {
+    try {
+      const { judul, deskripsi } = req.body;
+      const materyy = await materi.update(
+        {
+          judul: judul,
+          deskripsi: deskripsi,
+        },
+        {
+          where: {
+            id: req.params.id,
+          },
+        }
+      );
+      return res.status(200).json({
+        status: 200,
+        message: "Materi berhasil di update.",
+        materi: materyy,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: error.message,
+      });
+    }
+  },
+  updateSubMateri: async (req, res) => {
+    try {
+      const { judul, isi } = req.body;
+
+      const submateryy = await submateri.update(
+        {
+          judul: judul,
+          isi: isi,
+        },
+        { where: { id: req.params.id } }
+      );
+      
+      return res.status(200).json({
+        status: 200,
+        message: "Submateri berhasil diupdate.",
+        submateri: submateryy
+      })
     } catch (error) {
       return res.status(500).json({
         status: 500,
