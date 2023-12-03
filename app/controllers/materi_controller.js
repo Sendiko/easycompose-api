@@ -165,4 +165,46 @@ module.exports = {
       });
     }
   },
+  deleteMateri: async (req, res) => {
+    try{
+      const id = req.params.id
+      
+      await materi.destroy({
+        where: {
+          id: id
+        }
+      })
+
+      return res.status(200).json({
+        status: 200,
+        message: "Materi berhasil dihapus"
+      })
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: error.message,
+      });
+    }
+  },
+  deleteSubMateri: async (req, res) => {
+    try{
+      const id = req.params.id
+      
+      await submateri.destroy({
+        where: {
+          id: id
+        }
+      })
+
+      return res.status(200).json({
+        status: 200,
+        message: "Submateri berhasil dihapus"
+      })
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: error.message,
+      });
+    }
+  }
 };
