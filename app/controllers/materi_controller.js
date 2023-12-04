@@ -1,4 +1,3 @@
-const { where } = require("sequelize");
 const materi = require("../models/materi");
 const submateri = require("../models/submateri");
 
