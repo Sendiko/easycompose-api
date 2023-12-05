@@ -12,7 +12,7 @@ module.exports = {
   },
   create: async (req, res) => {
     try {
-      const { judul, url } = req.body;
+      const { judul, url, road_id } = req.body;
 
       if (judul == null) {
         return res.status(422).json({
@@ -30,6 +30,7 @@ module.exports = {
       const videoo = await video.create({
         judul: judul,
         url: url,
+        road_id: road_id
       });
 
       return res.status(201).json({
@@ -46,12 +47,13 @@ module.exports = {
   },
   update: async (req, res) => {
     try {
-      const { judul, url } = req.body;
+      const { judul, url, road_id } = req.body;
 
       const videoo = await video.update(
         {
           judul: judul,
           url: url,
+          road_id: road_id
         },
         {
           where: {
