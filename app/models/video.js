@@ -16,6 +16,10 @@ const video = sequelize.define("video", {
     type: DataType.TEXT,
     allowNull: false,
   },
+  road_id: {
+    type: DataType.BIGINT,
+    allowNull: true
+  }
 });
 
 video

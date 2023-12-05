@@ -16,6 +16,10 @@ const materi = sequelize.define("materi", {
     type: DataType.TEXT,
     allowNull: false,
   },
+  road_id: {
+    type: DataType.BIGINT,
+    allowNull: true
+  }
 });
 
 materi.sync()
