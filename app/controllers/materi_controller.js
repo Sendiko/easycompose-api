@@ -44,13 +44,15 @@ module.exports = {
   },
   postMateri: async (req, res) => {
     try {
-      if (req.body.judul == null) {
+      const {judul, deskripsi, road_id} = req.body
+
+      if (judul == null) {
         return res.status(422).json({
           status: 422,
           message: "Judul tidak boleh kosong.",
         });
       }
-      if (req.body.deskripsi == null) {
+      if (deskripsi == null) {
         return res.status(422).json({
           status: 422,
           message: "Deskripsi tidak boleh kosong.",
@@ -60,6 +62,7 @@ module.exports = {
       const materyy = await materi.create({
         judul: req.body.judul,
         deskripsi: req.body.deskripsi,
+        road_id: road_id
       });
 
       return res.status(201).json({
@@ -116,11 +119,12 @@ module.exports = {
   },
   updateMateri: async (req, res) => {
     try {
-      const { judul, deskripsi } = req.body;
+      const { judul, deskripsi, road_id } = req.body;
       const materyy = await materi.update(
         {
           judul: judul,
           deskripsi: deskripsi,
+          road_id: road_id,
         },
         {
           where: {
