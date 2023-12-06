@@ -5,6 +5,7 @@ const love_controller = require("../controllers/love_controller");
 const materi_controller = require("../controllers/materi_controller");
 const video_controller = require("../controllers/video_controller");
 const road_to_safety_controller = require("../controllers/road_to_safety_controller");
+const history_controller = require("../controllers/history_controller");
 
 router.post("/register", userController.register);
 router.post("/login", userController.login);
@@ -29,4 +30,11 @@ router.get("/road/:id", road_to_safety_controller.show);
 router.post("/road", road_to_safety_controller.create);
 router.put("/road/:id", road_to_safety_controller.update);
 router.delete("/road/:id", road_to_safety_controller.delete);
+
+router.get("/history", history_controller.index);
+router.get("/history/:id", history_controller.show);
+router.post("/history", history_controller.create);
+router.put("/history/:id", history_controller.update);
+router.delete("/history/:id", history_controller.delete);
+
 module.exports = router;
