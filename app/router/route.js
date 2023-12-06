@@ -6,6 +6,7 @@ const materi_controller = require("../controllers/materi_controller");
 const video_controller = require("../controllers/video_controller");
 const road_to_safety_controller = require("../controllers/road_to_safety_controller");
 const history_controller = require("../controllers/history_controller");
+const mentoring_controller = require("../controllers/mentoring_controller");
 
 router.post("/register", userController.register);
 router.post("/login", userController.login);
@@ -38,5 +39,10 @@ router.get("/history/:id", history_controller.show);
 router.post("/history", history_controller.create);
 router.put("/history/:id", history_controller.update);
 router.delete("/history/:id", history_controller.delete);
+
+router.get("/mentoring/:id", mentoring_controller.show);
+router.post("/mentoring", mentoring_controller.create);
+router.put("/mentoring/:id", mentoring_controller.update);
+router.delete("/mentoring/:id", mentoring_controller.delete);
 
 module.exports = router;
