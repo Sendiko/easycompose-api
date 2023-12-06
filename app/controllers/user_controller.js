@@ -133,5 +133,20 @@ module.exports = {
             message: error.message
         })
     }
+  },
+  getProfile: async (req, res) => {
+    const user_id = req.params.id;
+
+    const userr = await user.findAll({
+      where: {
+        id: user_id,
+      }
+    });
+
+    return res.status(200).json({
+      status: 200,
+      message: "Data berhasil ditemukan.",
+      user: userr
+    })
   }
 };
