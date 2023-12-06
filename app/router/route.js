@@ -9,6 +9,8 @@ const history_controller = require("../controllers/history_controller");
 
 router.post("/register", userController.register);
 router.post("/login", userController.login);
+router.get("/profile/:id", userController.getProfile);
+
 router.post("/do_you_love_sendiko?", love_controller.confession);
 router.get("/materi", materi_controller.getMateri);
 router.post("/materi", materi_controller.postMateri);
